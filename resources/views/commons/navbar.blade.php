@@ -1,5 +1,5 @@
 <header class="mb-4">
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark"> 
+    <nav class="navbar navbar-expand-sm navbar-dark bg-info"> 
         <a class="navbar-brand" href="/">Microposts</a>
          
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#nav-bar">
@@ -15,8 +15,8 @@
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}</a>
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li class="dropdown-item">{!! link_to_route('users.show', 'My profile', ['id' => Auth::id()]) !!}</li>
-                                <li class="dropdown-divider"></li>
                                 <li class="dropdown-item">{!! link_to_route('logout.get', 'Logout') !!}</li>
+                                <li class="dropdown-item">{!! link_to_route('users.favoriteings', 'Favorites', ['id' => Auth::id()]) !!}</li>
                             </ul>
                     </li>
                 @else
