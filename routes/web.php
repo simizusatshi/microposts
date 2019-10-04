@@ -10,6 +10,8 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 
 
 
+
+
 Route::get('/', 'MicropostsController@index');
 // 中略
 // ユーザ機能
@@ -18,10 +20,16 @@ Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
 Route::resource('microposts', 'MicropostsController', ['only' => ['store', 'destroy']]);
 });
 
-Route::group(['middleware' => 'auth'], function () {
+    Route::group(['middleware' => 'auth'], function () {
     Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
     
     Route::group(['prefix' => 'users/{id}'], function () {
+        
+        /*プロフィール画像*/
+        Route::get('/profile','ProfileController@index');
+        Route::post('/profile','ProfileController@store');
+        /*プロフィール画像*/
+        
         Route::post('follow', 'UserFollowController@store')->name('user.follow');
         Route::delete('unfollow', 'UserFollowController@destroy')->name('user.unfollow');
         Route::get('followings', 'UsersController@followings')->name('users.followings');
@@ -38,3 +46,7 @@ Route::group(['prefix' => 'microposts/{id}'], function () {
     
     Route::resource('microposts', 'MicropostsController', ['only' => ['store', 'destroy']]);
 });
+
+    Route::post( '/', 'PostsController@create');
+    
+

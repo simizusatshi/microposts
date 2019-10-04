@@ -4,6 +4,7 @@
     </div>
     <div class="card-body">
         <img class="rounded img-fluid" src="{{ Gravatar::src($user->email, 500) }}" alt="">
+ 　　　@include('post.create') 
     </div>
 </div>
 @include('user_follow.follow_button', ['user' => $user])

@@ -31,6 +31,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(Micropost::class);
     }
+    //ポストクラス//
+     public function posts()
+    {
+        return $this->hasMany(post::class);
+    }
     
     public function followings()
     {
